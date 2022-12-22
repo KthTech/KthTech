@@ -4,9 +4,9 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-version = '1.0'
-group = 'com.yourname.modid' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'modid'
+version = '1.19.2-0.0.0.0' // https://docs.minecraftforge.net/en/1.19.x/gettingstarted/versioning
+group = 'com.stagoh.kthtech' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'kthtech'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -46,13 +46,13 @@ minecraft {
             // Recommended logging level for the console
             // You can set various levels here.
             // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
-            property 'forge.logging.console.level', 'debug'
+            property 'forge.logging.console.level', 'info'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'kthtech'
 
             mods {
-                examplemod {
+                kthtech {
                     source sourceSets.main
                 }
             }
@@ -63,12 +63,12 @@ minecraft {
 
             property 'forge.logging.markers', 'REGISTRIES'
 
-            property 'forge.logging.console.level', 'debug'
+            property 'forge.logging.console.level', 'info'
 
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'kthtech'
 
             mods {
-                examplemod {
+                kthtech {
                     source sourceSets.main
                 }
             }
@@ -82,12 +82,12 @@ minecraft {
 
             property 'forge.logging.markers', 'REGISTRIES'
 
-            property 'forge.logging.console.level', 'debug'
+            property 'forge.logging.console.level', 'info'
 
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'kthtech'
 
             mods {
-                examplemod {
+                kthtech {
                     source sourceSets.main
                 }
             }
@@ -98,13 +98,13 @@ minecraft {
 
             property 'forge.logging.markers', 'REGISTRIES'
 
-            property 'forge.logging.console.level', 'debug'
+            property 'forge.logging.console.level', 'info'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'kthtech', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                examplemod {
+                kthtech {
                     source sourceSets.main
                 }
             }
@@ -146,12 +146,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "examplemod",
-                "Specification-Vendor"    : "examplemodsareus",
+                "Specification-Title"     : "kthtech",
+                "Specification-Vendor"    : "kthtechsareus",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "examplemodsareus",
+                "Implementation-Vendor"   : "kthtechsareus",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

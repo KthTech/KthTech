@@ -12,7 +12,7 @@ import com.mojang.logging.LogUtils;
 
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 
 @Mod.EventBusSubscriber(modid = KthTech.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class KthTechSubstance {
@@ -36,7 +36,7 @@ public class KthTechSubstance {
     private static final ArrayList<Substance> SUBSTANCES = new ArrayList<>();
 
     @SubscribeEvent
-    public static void readSubstances(FMLCommonSetupEvent e) {
+    public static void readSubstances(FMLConstructModEvent e) {
         LOGGER.info("Start reading substances from resource file");
 
         InputStream is = KthTechSubstance.class.getClassLoader().getResourceAsStream("assets/kthtech/substances.json");

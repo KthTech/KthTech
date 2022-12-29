@@ -17,10 +17,10 @@ public class KthTechBlockRegistry {
     public static void registerBlocks(RegisterEvent e) {
         e.register(ForgeRegistries.Keys.BLOCKS, helper -> {
             LOGGER.info("Start registering blocks");
-            var s1 = ForgeRegistries.BLOCKS.getKeys().size();
+            var cnt1 = ForgeRegistries.BLOCKS.getKeys().size();
 
-            var s2 = ForgeRegistries.BLOCKS.getKeys().size();
-            LOGGER.info(String.format("%d blocks registered", s2 - s1));
+            var cnt2 = ForgeRegistries.BLOCKS.getKeys().size();
+            LOGGER.info(String.format("%d blocks registered", cnt2 - cnt1));
         });
     }
 }

@@ -1,13 +1,12 @@
 package com.stagoh.kthtech.kthtech.registry;
 
-import java.util.ArrayList;
-
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 import com.stagoh.kthtech.kthtech.KthTech;
 import com.stagoh.kthtech.kthtech.KthTechSubstance;
-import com.stagoh.kthtech.kthtech.KthTechUtil;
+import com.stagoh.kthtech.kthtech.KthTechUtils;
+import com.stagoh.kthtech.kthtech.item.KthTechMetaItem;
 
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
@@ -23,16 +22,13 @@ public class KthTechColorRegistry {
     public static void registerItemColors(RegisterColorHandlersEvent.Item e) {
         LOGGER.info("Start registering ItemColors");
 
-        ArrayList<Item> metaItems = new ArrayList<>();
-        metaItems.add(KthTechUtil.getRegisteredInstance(ForgeRegistries.ITEMS, "dust"));
-        metaItems.add(KthTechUtil.getRegisteredInstance(ForgeRegistries.ITEMS, "ingot"));
         e.register((is, mint) -> {
-            var substanceID = 0;
+            var substance = 0;
             var tag = is.getTag();
             if (tag != null)
-                substanceID = tag.getInt("substanceID");
-            return KthTechSubstance.get(substanceID).color;
-        }, metaItems.toArray(new Item[0]));
+                substance = tag.getInt("substance");
+            return KthTechSubstance.get(substance).color;
+        }, KthTechUtils.regdObjs(ForgeRegistries.ITEMS, KthTechMetaItem.META_ITEMS).toArray(Item[]::new));
 
         LOGGER.info("All ItemColors registered");
     }

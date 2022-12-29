@@ -8,8 +8,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class KthTechMetaItem extends Item {
+    public static final String[] META_ITEMS = {
+            "dust",
+            "ingot"
+    };
+
     public KthTechMetaItem(Properties properties) {
         super(properties);
+    }
+
+    public KthTechMetaItem() {
+        this(new Item.Properties());
     }
 
     @Override
@@ -17,7 +26,7 @@ public class KthTechMetaItem extends Item {
         var substanceName = KthTechSubstance.get(0).name;
         var tag = is.getTag();
         if (tag != null)
-            substanceName = KthTechSubstance.get(tag.getInt("substanceID")).name;
+            substanceName = KthTechSubstance.get(tag.getInt("substance")).name;
         return Util.makeDescriptionId("item", ForgeRegistries.ITEMS.getKey(this).withPrefix(substanceName + "_"));
     }
 }

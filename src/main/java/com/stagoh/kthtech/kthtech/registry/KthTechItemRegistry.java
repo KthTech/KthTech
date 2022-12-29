@@ -6,8 +6,6 @@ import com.mojang.logging.LogUtils;
 import com.stagoh.kthtech.kthtech.KthTech;
 import com.stagoh.kthtech.kthtech.item.KthTechMetaItem;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -21,13 +19,14 @@ public class KthTechItemRegistry {
     public static void registerItems(RegisterEvent e) {
         e.register(ForgeRegistries.Keys.ITEMS, helper -> {
             LOGGER.info("Start registering items");
-            var s1 = ForgeRegistries.ITEMS.getKeys().size();
+            var cnt1 = ForgeRegistries.ITEMS.getKeys().size();
 
-            helper.register(new ResourceLocation(KthTech.MODID, "dust"), new KthTechMetaItem(new Item.Properties()));
-            helper.register(new ResourceLocation(KthTech.MODID, "ingot"), new KthTechMetaItem(new Item.Properties()));
+            for (var mitem : KthTechMetaItem.META_ITEMS) {
+                helper.register(mitem, new KthTechMetaItem());
+            }
 
-            var s2 = ForgeRegistries.ITEMS.getKeys().size();
-            LOGGER.info(String.format("%d items registered", s2 - s1));
+            var cnt2 = ForgeRegistries.ITEMS.getKeys().size();
+            LOGGER.info(String.format("%d items registered", cnt2 - cnt1));
         });
     }
 }

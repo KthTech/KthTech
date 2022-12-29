@@ -15,14 +15,17 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 
 @Mod.EventBusSubscriber(modid = KthTech.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class KthTechColorRegistry {
+public class KthTechColorRegistry
+{
     private static final Logger LOGGER = LogUtils.getLogger();
 
     @SubscribeEvent
-    public static void registerItemColors(RegisterColorHandlersEvent.Item e) {
+    public static void registerItemColors(RegisterColorHandlersEvent.Item e)
+    {
         LOGGER.info("Start registering ItemColors");
 
-        e.register((is, mint) -> {
+        e.register((is, mint) ->
+        {
             var substance = 0;
             var tag = is.getTag();
             if (tag != null)
@@ -34,7 +37,8 @@ public class KthTechColorRegistry {
     }
 
     @SubscribeEvent
-    public static void registerBlockColors(RegisterColorHandlersEvent.Block e) {
+    public static void registerBlockColors(RegisterColorHandlersEvent.Block e)
+    {
         LOGGER.info("Start registering BlockColors");
 
         LOGGER.info("All BlockColors registered");

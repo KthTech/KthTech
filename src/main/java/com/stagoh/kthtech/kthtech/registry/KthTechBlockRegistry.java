@@ -10,12 +10,15 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
 
 @Mod.EventBusSubscriber(modid = KthTech.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class KthTechBlockRegistry {
+public class KthTechBlockRegistry
+{
     private static final Logger LOGGER = LogUtils.getLogger();
 
     @SubscribeEvent
-    public static void registerBlocks(RegisterEvent e) {
-        e.register(ForgeRegistries.Keys.BLOCKS, helper -> {
+    public static void registerBlocks(RegisterEvent e)
+    {
+        e.register(ForgeRegistries.Keys.BLOCKS, helper ->
+        {
             LOGGER.info("Start registering blocks");
             var cnt1 = ForgeRegistries.BLOCKS.getKeys().size();
 

@@ -5,11 +5,13 @@ import com.mojang.logging.LogUtils;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod(KthTech.MODID)
-public class KthTech {
+public class KthTech
+{
     public static final String MODID = "kthtech";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public KthTech() {
+    public KthTech()
+    {
         LOGGER.info("KthTech");
     }
 }

@@ -15,16 +15,19 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 
 @Mod.EventBusSubscriber(modid = KthTech.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class KthTechSubstance {
+public class KthTechSubstance
+{
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public static class Substance {
+    public static class Substance
+    {
         public String name;
         public int color;
         public boolean has_dust;
         public boolean has_ingot;
 
-        public Substance() {
+        public Substance()
+        {
             this.name = "undefined";
             this.color = 0xffffff;
             this.has_dust = false;
@@ -36,7 +39,8 @@ public class KthTechSubstance {
     private static final ArrayList<Substance> SUBSTANCES = new ArrayList<>();
 
     @SubscribeEvent
-    public static void readSubstances(FMLConstructModEvent e) {
+    public static void readSubstances(FMLConstructModEvent e)
+    {
         LOGGER.info("Start reading substances from resource file");
 
         InputStream is = KthTechSubstance.class.getClassLoader().getResourceAsStream("assets/kthtech/substances.json");
@@ -46,17 +50,19 @@ public class KthTechSubstance {
     }
 
     /**
-     * @param index 1-indexed
+     * @param index
+     *            1-indexed
      * @return If the index is valid, return the corresponding substance; otherwise,
      *         return undefined substance
      */
-    public static Substance get(int index) {
-        if (index <= 0 || index > SUBSTANCES.size())
-            return UNDEFINED;
+    public static Substance get(int index)
+    {
+        if (index <= 0 || index > SUBSTANCES.size()) return UNDEFINED;
         return SUBSTANCES.get(index - 1);
     }
 
-    public static int size() {
+    public static int size()
+    {
         return SUBSTANCES.size();
     }
 }

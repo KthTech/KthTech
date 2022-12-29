@@ -12,18 +12,20 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
 
 @Mod.EventBusSubscriber(modid = KthTech.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class KthTechItemRegistry {
+public class KthTechItemRegistry
+{
     private static final Logger LOGGER = LogUtils.getLogger();
 
     @SubscribeEvent
-    public static void registerItems(RegisterEvent e) {
-        e.register(ForgeRegistries.Keys.ITEMS, helper -> {
+    public static void registerItems(RegisterEvent e)
+    {
+        e.register(ForgeRegistries.Keys.ITEMS, helper ->
+        {
             LOGGER.info("Start registering items");
             var cnt1 = ForgeRegistries.ITEMS.getKeys().size();
 
-            for (var mitem : KthTechMetaItem.META_ITEMS) {
+            for (var mitem : KthTechMetaItem.META_ITEMS)
                 helper.register(mitem, new KthTechMetaItem());
-            }
 
             var cnt2 = ForgeRegistries.ITEMS.getKeys().size();
             LOGGER.info(String.format("%d items registered", cnt2 - cnt1));

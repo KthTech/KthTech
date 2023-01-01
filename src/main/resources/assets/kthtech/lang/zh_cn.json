@@ -179,5 +179,6 @@
     "item.kthtech.zirconium_dust": "锆粉",
     "item.kthtech.zirconium_ingot": "锆锭",
     "item_group.kthtech.dust": "粉",
-    "item_group.kthtech.ingot": "锭"
+    "item_group.kthtech.ingot": "锭",
+    "pack.kthtech.description": "kthtech 资源"
 }

@@ -179,5 +179,6 @@
     "item.kthtech.zirconium_dust": "Zirconium Dust",
     "item.kthtech.zirconium_ingot": "Zirconium Ingot",
     "item_group.kthtech.dust": "Dust",
-    "item_group.kthtech.ingot": "Ingot"
+    "item_group.kthtech.ingot": "Ingot",
+    "pack.kthtech.description": "kthtech resources"
 }

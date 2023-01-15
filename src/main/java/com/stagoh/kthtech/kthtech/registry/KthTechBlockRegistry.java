@@ -17,8 +17,7 @@ public class KthTechBlockRegistry
     @SubscribeEvent
     public static void registerBlocks(RegisterEvent e)
     {
-        e.register(ForgeRegistries.Keys.BLOCKS, helper ->
-        {
+        e.register(ForgeRegistries.Keys.BLOCKS, helper -> {
             LOGGER.info("Start registering blocks");
             var cnt1 = ForgeRegistries.BLOCKS.getKeys().size();
 

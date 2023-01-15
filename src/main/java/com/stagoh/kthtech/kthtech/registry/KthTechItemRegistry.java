@@ -19,8 +19,7 @@ public class KthTechItemRegistry
     @SubscribeEvent
     public static void registerItems(RegisterEvent e)
     {
-        e.register(ForgeRegistries.Keys.ITEMS, helper ->
-        {
+        e.register(ForgeRegistries.Keys.ITEMS, helper -> {
             LOGGER.info("Start registering items");
             var cnt1 = ForgeRegistries.ITEMS.getKeys().size();
 

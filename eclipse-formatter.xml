@@ -57,7 +57,7 @@
         <setting id="org.eclipse.jdt.core.formatter.brace_position_for_constructor_declaration" value="next_line" />
         <setting id="org.eclipse.jdt.core.formatter.brace_position_for_enum_constant" value="next_line" />
         <setting id="org.eclipse.jdt.core.formatter.brace_position_for_enum_declaration" value="next_line" />
-        <setting id="org.eclipse.jdt.core.formatter.brace_position_for_lambda_body" value="next_line" />
+        <setting id="org.eclipse.jdt.core.formatter.brace_position_for_lambda_body" value="end_of_line" />
         <setting id="org.eclipse.jdt.core.formatter.brace_position_for_method_declaration" value="next_line" />
         <setting id="org.eclipse.jdt.core.formatter.brace_position_for_switch" value="next_line" />
         <setting id="org.eclipse.jdt.core.formatter.brace_position_for_type_declaration" value="next_line" />

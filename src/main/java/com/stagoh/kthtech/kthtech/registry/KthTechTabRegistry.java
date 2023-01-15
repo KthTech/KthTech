@@ -48,12 +48,10 @@ public class KthTechTabRegistry
                 continue;
             }
 
-            e.registerCreativeModeTab(resLoc, builder ->
-            {
+            e.registerCreativeModeTab(resLoc, builder -> {
                 builder.title(Component.translatable(resLoc.toLanguageKey("item_group")))
                     .icon(() -> item.getDefaultInstance())
-                    .displayItems((enabledFlags, populator, hasPermissions) ->
-                    {
+                    .displayItems((enabledFlags, populator, hasPermissions) -> {
                         for (int i = 1; i <= KthTechSubstance.size(); i++)
                         {
                             if (!has[i]) continue;

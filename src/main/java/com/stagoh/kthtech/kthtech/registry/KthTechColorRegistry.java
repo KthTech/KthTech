@@ -24,8 +24,7 @@ public class KthTechColorRegistry
     {
         LOGGER.info("Start registering ItemColors");
 
-        e.register((is, mint) ->
-        {
+        e.register((is, mint) -> {
             var substance = 0;
             var tag = is.getTag();
             if (tag != null)

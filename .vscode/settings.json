@@ -2,6 +2,11 @@
     "files.associations": {
         "pack.mcmeta": "json"
     },
+    "github-actions.workflows.pinned.refresh.enabled": true,
+    "github-actions.workflows.pinned.refresh.interval": 600,
+    "github-actions.workflows.pinned.workflows": [
+        ".github/workflows/build.yml"
+    ],
     "java.compile.nullAnalysis.mode": "automatic",
     "java.configuration.updateBuildConfiguration": "interactive",
     "java.format.settings.url": "eclipse-formatter.xml"

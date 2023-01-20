@@ -39,7 +39,7 @@ public class KthTechSubstance
     private static final ArrayList<Substance> SUBSTANCES = new ArrayList<>();
 
     @SubscribeEvent
-    public static void readSubstances(FMLConstructModEvent e)
+    public static void readSubstances(FMLConstructModEvent event)
     {
         LOGGER.info("Start reading substances from resource file");
 

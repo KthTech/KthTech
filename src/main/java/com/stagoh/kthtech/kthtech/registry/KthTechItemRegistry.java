@@ -17,9 +17,9 @@ public class KthTechItemRegistry
     private static final Logger LOGGER = LogUtils.getLogger();
 
     @SubscribeEvent
-    public static void registerItems(RegisterEvent e)
+    public static void registerItems(RegisterEvent event)
     {
-        e.register(ForgeRegistries.Keys.ITEMS, helper -> {
+        event.register(ForgeRegistries.Keys.ITEMS, helper -> {
             LOGGER.info("Start registering items");
             var cnt1 = ForgeRegistries.ITEMS.getKeys().size();
 

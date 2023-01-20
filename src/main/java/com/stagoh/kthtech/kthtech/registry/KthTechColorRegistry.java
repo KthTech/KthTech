@@ -20,11 +20,11 @@ public class KthTechColorRegistry
     private static final Logger LOGGER = LogUtils.getLogger();
 
     @SubscribeEvent
-    public static void registerItemColors(RegisterColorHandlersEvent.Item e)
+    public static void registerItemColors(RegisterColorHandlersEvent.Item event)
     {
         LOGGER.info("Start registering ItemColors");
 
-        e.register((is, mint) -> {
+        event.register((is, mint) -> {
             var substance = 0;
             var tag = is.getTag();
             if (tag != null)
@@ -36,7 +36,7 @@ public class KthTechColorRegistry
     }
 
     @SubscribeEvent
-    public static void registerBlockColors(RegisterColorHandlersEvent.Block e)
+    public static void registerBlockColors(RegisterColorHandlersEvent.Block event)
     {
         LOGGER.info("Start registering BlockColors");
 

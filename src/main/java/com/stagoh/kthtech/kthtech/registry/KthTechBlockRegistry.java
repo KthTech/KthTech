@@ -15,9 +15,9 @@ public class KthTechBlockRegistry
     private static final Logger LOGGER = LogUtils.getLogger();
 
     @SubscribeEvent
-    public static void registerBlocks(RegisterEvent e)
+    public static void registerBlocks(RegisterEvent event)
     {
-        e.register(ForgeRegistries.Keys.BLOCKS, helper -> {
+        event.register(ForgeRegistries.Keys.BLOCKS, helper -> {
             LOGGER.info("Start registering blocks");
             var cnt1 = ForgeRegistries.BLOCKS.getKeys().size();
 

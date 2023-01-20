@@ -23,7 +23,7 @@ public class KthTechTabRegistry
     private static final Logger LOGGER = LogUtils.getLogger();
 
     @SubscribeEvent
-    public static void registerTabs(CreativeModeTabEvent.Register e)
+    public static void registerTabs(CreativeModeTabEvent.Register event)
     {
         LOGGER.info("Start registering creativetabs");
 
@@ -48,7 +48,7 @@ public class KthTechTabRegistry
                 continue;
             }
 
-            e.registerCreativeModeTab(resLoc, builder -> {
+            event.registerCreativeModeTab(resLoc, builder -> {
                 builder.title(Component.translatable(resLoc.toLanguageKey("item_group")))
                     .icon(() -> item.getDefaultInstance())
                     .displayItems((enabledFlags, populator, hasPermissions) -> {

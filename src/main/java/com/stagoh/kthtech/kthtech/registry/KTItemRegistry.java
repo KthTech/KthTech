@@ -4,25 +4,25 @@ import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 import com.stagoh.kthtech.kthtech.KthTech;
+
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
 
 @Mod.EventBusSubscriber(modid = KthTech.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class KthTechBlockRegistry
+public class KTItemRegistry
 {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     @SubscribeEvent
-    public static void registerBlocks(RegisterEvent event)
+    public static void registerItems(RegisterEvent event)
     {
-        event.register(ForgeRegistries.Keys.BLOCKS, helper -> {
-            LOGGER.info("Start registering blocks");
-            var cnt1 = ForgeRegistries.BLOCKS.getKeys().size();
+        event.register(ForgeRegistries.Keys.ITEMS, helper -> {
+            var cnt1 = ForgeRegistries.ITEMS.getKeys().size();
 
-            var cnt2 = ForgeRegistries.BLOCKS.getKeys().size();
-            LOGGER.info(String.format("%d blocks registered", cnt2 - cnt1));
+            var cnt2 = ForgeRegistries.ITEMS.getKeys().size();
+            LOGGER.info(String.format("%d items registered", cnt2 - cnt1));
         });
     }
 }

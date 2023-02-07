@@ -1,12 +1,16 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "iron_ingot",
   "ingredients": [
     {
       "tag": "forge:raw_materials/iron"
     },
     {
       "item": "minecraft:calcite"
+    },
+    {
+      "item": "minecraft:charcoal"
     },
     {
       "item": "minecraft:charcoal"

@@ -1,3 +1,5 @@
-// 1.19.3	2023-02-07T05:17:33.0148168	Recipes
-1f2fce8231539497a0210f0ee323f5b3cc5ac1eb data/minecraft/advancements/recipes/misc/iron_ingot.json
-129507bea41b8ba18f8033ab8497075cd62aab80 data/minecraft/recipes/iron_ingot.json
+// 1.19.3	2023-02-08T02:13:46.8061693	Recipes
+a28a60cef6f472cb8040a0ba6ae2c7c3e0af2883 data/kthtech/advancements/recipes/misc/iron_ingot_from_charcoal.json
+1b3ab1918d15b349291794e998fa5f7c84e06791 data/kthtech/advancements/recipes/misc/iron_ingot_from_coke.json
+5a156d907a171fb980de2bb8de604d27e7a3cae3 data/kthtech/recipes/iron_ingot_from_charcoal.json
+65e073c6519903561befd6847e6de914868118c2 data/kthtech/recipes/iron_ingot_from_coke.json

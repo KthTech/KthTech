@@ -1,13 +1,10 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "got_raw_iron": {
+    "has_raw_iron": {
       "conditions": {
         "items": [
           {
-            "count": {
-              "min": 1
-            },
             "items": [
               "minecraft:raw_iron"
             ]
@@ -18,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:iron_ingot"
+        "recipe": "kthtech:iron_ingot_from_charcoal"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "got_raw_iron",
+      "has_raw_iron",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:iron_ingot"
+      "kthtech:iron_ingot_from_charcoal"
     ]
   }
 }

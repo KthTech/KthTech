@@ -1,11 +1,14 @@
 package com.stagoh.kthtech.kthtech.registry;
 
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 import com.stagoh.kthtech.kthtech.KthTech;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -22,7 +25,13 @@ public class KTItemRegistry
         event.register(ForgeRegistries.Keys.ITEMS, helper -> {
             final var COUNT1 = ForgeRegistries.ITEMS.getKeys().size();
 
-            helper.register("coke", new Item(new Item.Properties()));
+            helper.register("coke", new Item(new Item.Properties()) {
+                @Override
+                public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType)
+                {
+                    return 1600;
+                }
+            });
 
             final var COUNT2 = ForgeRegistries.ITEMS.getKeys().size();
             LOGGER.info(String.format("%d items registered", COUNT2 - COUNT1));

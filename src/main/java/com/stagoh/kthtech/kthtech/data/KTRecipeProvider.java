@@ -10,7 +10,9 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
 
 public class KTRecipeProvider extends RecipeProvider
@@ -37,5 +39,14 @@ public class KTRecipeProvider extends RecipeProvider
             .requires(ktItem("coke"))
             .unlockedBy(getHasName(Items.RAW_IRON), has(Items.RAW_IRON))
             .save(consumer, ktRLoc(getConversionRecipeName(Items.IRON_INGOT, ktItem("coke"))));
+
+        SimpleCookingRecipeBuilder.smelting(
+            Ingredient.of(Items.COAL),
+            RecipeCategory.MISC,
+            ktItem("coke"),
+            0.15f,
+            200
+        ).unlockedBy(getHasName(Items.COAL), has(Items.COAL))
+            .save(consumer);
     }
 }

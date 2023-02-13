@@ -1,9 +1,7 @@
 package com.stagoh.kthtech.kthtech.registry;
 
-import static com.stagoh.kthtech.kthtech.util.KTUtils.ktRLoc;
-import static com.stagoh.kthtech.kthtech.util.KTUtils.ktItem;
-
 import com.stagoh.kthtech.kthtech.KthTech;
+import com.stagoh.kthtech.kthtech.util.KTUtils;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -17,11 +15,13 @@ public class KTTabRegistry
     @SubscribeEvent
     public static void registerTabs(CreativeModeTabEvent.Register event)
     {
-        event.registerCreativeModeTab(ktRLoc(KthTech.MODID), builder -> {
+        event.registerCreativeModeTab(KTUtils.ktRLoc(KthTech.MODID), builder -> {
             builder.title(Component.translatable("item_group." + KthTech.MODID))
-                .icon(() -> new ItemStack(ktItem("coke")))
+                .icon(() -> new ItemStack(KTItems.COKE.get()))
                 .displayItems((enabledFlags, populator, hasPermissions) -> {
-                    populator.accept(ktItem("coke"));
+                    populator.accept(KTItems.COKE.get());
+                    populator.accept(KTItems.CRUSHED_RAW_IRON.get());
+                    // populator.accept(KTBlocks.CRUSHER.get());
                 });
         });
     }

@@ -1,9 +1,10 @@
 package com.stagoh.kthtech.kthtech.data;
 
-import static com.stagoh.kthtech.kthtech.util.KTUtils.ktItem;
 import static com.stagoh.kthtech.kthtech.util.KTUtils.ktRLoc;
 
 import java.util.function.Consumer;
+
+import com.stagoh.kthtech.kthtech.registry.KTItems;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -36,14 +37,14 @@ public class KTRecipeProvider extends RecipeProvider
             .group(getItemName(Items.IRON_INGOT))
             .requires(Tags.Items.RAW_MATERIALS_IRON)
             .requires(Items.CALCITE)
-            .requires(ktItem("coke"))
+            .requires(KTItems.COKE.get())
             .unlockedBy(getHasName(Items.RAW_IRON), has(Items.RAW_IRON))
-            .save(consumer, ktRLoc(getConversionRecipeName(Items.IRON_INGOT, ktItem("coke"))));
+            .save(consumer, ktRLoc(getConversionRecipeName(Items.IRON_INGOT, KTItems.COKE.get())));
 
         SimpleCookingRecipeBuilder.smelting(
             Ingredient.of(Items.COAL),
             RecipeCategory.MISC,
-            ktItem("coke"),
+            KTItems.COKE.get(),
             0.15f,
             200
         ).unlockedBy(getHasName(Items.COAL), has(Items.COAL))

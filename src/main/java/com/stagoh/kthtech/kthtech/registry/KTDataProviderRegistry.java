@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 public class KTDataProviderRegistry
 {
     @SubscribeEvent
-    public static void registerDataGenerators(GatherDataEvent event)
+    public static void registerDataProviders(GatherDataEvent event)
     {
         final var GENERATOR = event.getGenerator();
         final var EFHELPER = event.getExistingFileHelper();

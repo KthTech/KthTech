@@ -1,8 +1,7 @@
 package com.stagoh.kthtech.kthtech.data.lang;
 
-import static com.stagoh.kthtech.kthtech.util.KTUtils.ktItem;
-
 import com.stagoh.kthtech.kthtech.KthTech;
+import com.stagoh.kthtech.kthtech.registry.KTItems;
 
 import net.minecraft.data.PackOutput;
 
@@ -18,6 +17,6 @@ public class KTENUSLangProvider extends KTAbstractLangProvider
     {
         add("item_group." + KthTech.MODID, "KthTech");
 
-        add(ktItem("coke"), "Coke");
+        add(KTItems.COKE.get(), "Coke");
     }
 }

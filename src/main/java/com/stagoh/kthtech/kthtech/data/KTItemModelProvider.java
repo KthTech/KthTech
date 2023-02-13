@@ -1,8 +1,7 @@
 package com.stagoh.kthtech.kthtech.data;
 
-import static com.stagoh.kthtech.kthtech.util.KTUtils.ktItem;
-
 import com.stagoh.kthtech.kthtech.KthTech;
+import com.stagoh.kthtech.kthtech.registry.KTItems;
 
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -18,6 +17,6 @@ public class KTItemModelProvider extends ItemModelProvider
     @Override
     protected void registerModels()
     {
-        basicItem(ktItem("coke"));
+        basicItem(KTItems.COKE.get());
     }
 }

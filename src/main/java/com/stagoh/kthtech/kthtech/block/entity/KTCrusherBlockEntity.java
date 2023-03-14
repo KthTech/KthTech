@@ -16,6 +16,12 @@ public class KTCrusherBlockEntity extends BlockEntity
     }
 
     @Override
+    public void setChanged()
+    {
+        super.setChanged();
+    }
+
+    @Override
     protected void saveAdditional(CompoundTag tag)
     {
         super.saveAdditional(tag);

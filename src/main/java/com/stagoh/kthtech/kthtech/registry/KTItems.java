@@ -31,10 +31,7 @@ public class KTItems
         () -> new KtSimpleFuelItem(1600)
     );
 
-    public static final RegistryObject<BlockItem> CRUSHER = basic(
-        "crusher",
-        KTBlocks.CRUSHER
-    );
+    public static final RegistryObject<BlockItem> CRUSHER = basic("crusher", KTBlocks.CRUSHER);
 
     private static <T extends Item> RegistryObject<T> normal(String name, Supplier<T> sup)
     {

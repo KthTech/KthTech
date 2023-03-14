@@ -1,13 +1,11 @@
 package com.stagoh.kthtech.kthtech.registry;
 
-import java.util.function.Supplier;
-
+import com.google.common.base.Supplier;
 import com.stagoh.kthtech.kthtech.KthTech;
-import com.stagoh.kthtech.kthtech.block.KTCrusherBlock;
+import com.stagoh.kthtech.kthtech.menu.KTCrusherMenu;
 
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
@@ -17,23 +15,26 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(modid = KthTech.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class KTBlocks
+public class KTMenuTypes
 {
-    private static final DeferredRegister<Block> REGISTER = DeferredRegister.create(
-        ForgeRegistries.BLOCKS,
+    public static final DeferredRegister<MenuType<?>> REGISTER = DeferredRegister.create(
+        ForgeRegistries.MENU_TYPES,
         KthTech.MODID
     );
 
-    public static final RegistryObject<Block> CRUSHER = normal("crusher", () -> new KTCrusherBlock());
+    public static final RegistryObject<MenuType<KTCrusherMenu>> CRUSHER = basic("crusher", KTCrusherMenu::new);
 
-    private static <T extends Block> RegistryObject<T> normal(String name, Supplier<T> sup)
+    private static <T extends MenuType<?>> RegistryObject<T> normal(String name, Supplier<T> sup)
     {
         return REGISTER.register(name, sup);
     }
 
-    private static RegistryObject<Block> basic(String name, Material material)
+    private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> basic(
+        String name,
+        MenuType.MenuSupplier<T> sup
+    )
     {
-        return normal(name, () -> new Block(BlockBehaviour.Properties.of(material)));
+        return normal(name, () -> new MenuType<>(sup));
     }
 
     @SubscribeEvent

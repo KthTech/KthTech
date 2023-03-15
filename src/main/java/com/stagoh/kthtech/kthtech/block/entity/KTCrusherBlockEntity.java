@@ -10,13 +10,14 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class KTCrusherBlockEntity extends BlockEntity
 {
-    private static final int SLOT_INPUT = 0;
+    private static final int SLOT_RAW = 0;
     private static final int SLOT_RESULT = 1;
 
     private int elapsedTime;
@@ -44,22 +45,27 @@ public class KTCrusherBlockEntity extends BlockEntity
         tag.putInt("ElapsedTime", this.elapsedTime);
     }
 
+    private boolean canProgress()
+    {
+        var raw = this.items.get(SLOT_RAW);
+        var res = this.items.get(SLOT_RESULT);
+        if (!raw.is(Items.RAW_IRON)) return false;
+        if (res.isEmpty()) return true;
+        if (res.is(KTItems.CRUSHED_RAW_IRON.get()) && res.getCount() < res.getMaxStackSize())
+            return true;
+        return false;
+    }
+
     public static void tick(Level level, BlockPos pos, BlockState state, KTCrusherBlockEntity entity)
     {
-        if (++entity.elapsedTime == 200)
+        var raw = entity.items.get(SLOT_RAW);
+        var res = entity.items.get(SLOT_RESULT);
+        if (!entity.canProgress()) return;
+        if (++entity.elapsedTime == 100)
         {
             entity.elapsedTime = 0;
-            var iptSlot = entity.items.get(SLOT_INPUT);
-            var resSlot = entity.items.get(SLOT_RESULT);
-            if (resSlot.isEmpty())
-            {
-                resSlot = new ItemStack(KTItems.CRUSHED_RAW_IRON.get());
-            }
-            else if (resSlot.is(KTItems.CRUSHED_RAW_IRON.get()))
-            {
-                if (resSlot.getCount() == resSlot.getMaxStackSize()) return;
-                resSlot.setCount(resSlot.getCount() + 1);
-            }
+            raw.shrink(1);
+            res.grow(1);
         }
     }
 }

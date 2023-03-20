@@ -45,6 +45,11 @@ public class KTCrusherBlockEntity extends BlockEntity
         tag.putInt("ElapsedTime", this.elapsedTime);
     }
 
+    public NonNullList<ItemStack> getItems()
+    {
+        return this.items;
+    }
+
     private boolean canProgress()
     {
         var raw = this.items.get(SLOT_RAW);
@@ -65,7 +70,9 @@ public class KTCrusherBlockEntity extends BlockEntity
         {
             entity.elapsedTime = 0;
             raw.shrink(1);
-            res.grow(1);
+            if (res.isEmpty())
+                entity.items.set(SLOT_RESULT, new ItemStack(KTItems.CRUSHED_RAW_IRON.get()));
+            else res.grow(1);
         }
     }
 }

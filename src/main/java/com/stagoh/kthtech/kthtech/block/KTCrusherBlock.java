@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.NetworkHooks;
 
 public class KTCrusherBlock extends BaseEntityBlock
@@ -54,8 +55,12 @@ public class KTCrusherBlock extends BaseEntityBlock
     @Nullable
     public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos)
     {
+        var entity = (KTCrusherBlockEntity)level.getBlockEntity(pos);
+        if (entity == null) return null;
         return new SimpleMenuProvider(
-            (id, inventory, player) -> new KTCrusherMenu(id, inventory),
+            (id, inventory, player) -> new KTCrusherMenu(
+                id, inventory, new ItemStackHandler(entity.getItems())
+            ),
             Component.translatable("menu.title.kthtech.crusher")
         );
     }

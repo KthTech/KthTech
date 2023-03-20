@@ -18,5 +18,6 @@ public class KTItemModelProvider extends ItemModelProvider
     protected void registerModels()
     {
         basicItem(KTItems.COKE.get());
+        basicItem(KTItems.CRUSHED_RAW_IRON.get());
     }
 }

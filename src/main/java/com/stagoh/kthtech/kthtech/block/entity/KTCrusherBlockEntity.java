@@ -65,13 +65,16 @@ public class KTCrusherBlockEntity extends BlockEntity
     {
         var raw = entity.items.get(SLOT_RAW);
         var res = entity.items.get(SLOT_RESULT);
-        if (!entity.canProgress()) return;
+        if (!entity.canProgress())
+        {
+            entity.elapsedTime = 0;
+            return;
+        }
         if (++entity.elapsedTime == 100)
         {
             entity.elapsedTime = 0;
             raw.shrink(1);
-            if (res.isEmpty())
-                entity.items.set(SLOT_RESULT, new ItemStack(KTItems.CRUSHED_RAW_IRON.get()));
+            if (res.isEmpty()) entity.items.set(SLOT_RESULT, new ItemStack(KTItems.CRUSHED_RAW_IRON.get()));
             else res.grow(1);
         }
     }

@@ -4,7 +4,7 @@ plugins {
     id "net.minecraftforge.gradle" version "5.1.+"
 }
 
-version = "1.19.2-0.0.0.0" // https://docs.minecraftforge.net/en/1.19.x/gettingstarted/versioning
+version = "1.19.3-0.0.0.0" // https://docs.minecraftforge.net/en/1.19.x/gettingstarted/versioning
 group = "com.stagoh.kthtech" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "kthtech"
 
@@ -133,7 +133,7 @@ dependencies {
     // Specify the version of Minecraft to use. If this is any group other than "net.minecraft", it is assumed
     // that the dep is a ForgeGradle "patcher" dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft "net.minecraftforge:forge:1.19.3-44.1.16"
+    minecraft "net.minecraftforge:forge:1.19.3-44.1.23"
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency

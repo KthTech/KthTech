@@ -3,7 +3,7 @@ package com.stagoh.kthtech.kthtech.registry;
 import java.util.function.Supplier;
 
 import com.stagoh.kthtech.kthtech.KthTech;
-import com.stagoh.kthtech.kthtech.item.base.KtSimpleFuelItem;
+import com.stagoh.kthtech.kthtech.item.base.KtFuelItem;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -26,15 +26,9 @@ public class KTItems
 
     public static final RegistryObject<Item> CRUSHED_RAW_IRON = basic("crushed_raw_iron");
 
-    public static final RegistryObject<KtSimpleFuelItem> COKE = normal(
-        "coke",
-        () -> new KtSimpleFuelItem(1600)
-    );
+    public static final RegistryObject<KtFuelItem> COKE = normal("coke", () -> new KtFuelItem(1600));
 
-    public static final RegistryObject<BlockItem> CRUSHER = basic(
-        "crusher",
-        KTBlocks.CRUSHER
-    );
+    public static final RegistryObject<BlockItem> CRUSHER = basic("crusher", KTBlocks.CRUSHER);
 
     private static <T extends Item> RegistryObject<T> normal(String name, Supplier<T> sup)
     {

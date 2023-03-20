@@ -21,7 +21,7 @@ public class KTTabRegistry
                 .displayItems((enabledFlags, populator, hasPermissions) -> {
                     populator.accept(KTItems.COKE.get());
                     populator.accept(KTItems.CRUSHED_RAW_IRON.get());
-                    // populator.accept(KTBlocks.CRUSHER.get());
+                    populator.accept(KTItems.CRUSHER.get());
                 });
         });
     }

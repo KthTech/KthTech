@@ -2,6 +2,6 @@
     "recommendations": [
         "vscjava.vscode-java-pack",
         "vscjava.vscode-gradle",
-        "cschleiden.vscode-github-actions"
+        "github.vscode-github-actions"
     ]
 }

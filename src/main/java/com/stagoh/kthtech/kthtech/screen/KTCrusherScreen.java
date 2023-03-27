@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.stagoh.kthtech.kthtech.menu.KTCrusherMenu;
 import com.stagoh.kthtech.kthtech.util.KTUtils;
 
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -34,6 +35,6 @@ public class KTCrusherScreen extends AbstractContainerScreen<KTCrusherMenu>
     protected void renderBg(PoseStack pose, float partialTick, int mouseX, int mouseY)
     {
         RenderSystem.setShaderTexture(0, BACKGROUND_LOCATION);
-        this.blit(pose, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
+        GuiComponent.blit(pose, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
     }
 }

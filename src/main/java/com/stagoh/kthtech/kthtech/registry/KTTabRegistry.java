@@ -18,10 +18,10 @@ public class KTTabRegistry
         event.registerCreativeModeTab(KTUtils.ktRLoc(KthTech.MODID), builder -> {
             builder.title(Component.translatable("item_group." + KthTech.MODID))
                 .icon(() -> new ItemStack(KTItems.COKE.get()))
-                .displayItems((enabledFlags, populator, hasPermissions) -> {
-                    populator.accept(KTItems.COKE.get());
-                    populator.accept(KTItems.CRUSHED_RAW_IRON.get());
-                    populator.accept(KTItems.CRUSHER.get());
+                .displayItems((params, output) -> {
+                    output.accept(KTItems.COKE.get());
+                    output.accept(KTItems.CRUSHED_RAW_IRON.get());
+                    output.accept(KTBlocks.CRUSHER.get());
                 });
         });
     }

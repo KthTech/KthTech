@@ -4,6 +4,7 @@ import com.google.common.base.Supplier;
 import com.stagoh.kthtech.kthtech.KthTech;
 import com.stagoh.kthtech.kthtech.menu.KTCrusherMenu;
 
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -34,7 +35,7 @@ public class KTMenuTypes
         MenuType.MenuSupplier<T> sup
     )
     {
-        return normal(name, () -> new MenuType<>(sup));
+        return normal(name, () -> new MenuType<>(sup, FeatureFlags.DEFAULT_FLAGS));
     }
 
     @SubscribeEvent

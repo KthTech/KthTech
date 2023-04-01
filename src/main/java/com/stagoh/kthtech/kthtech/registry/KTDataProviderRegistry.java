@@ -2,9 +2,9 @@ package com.stagoh.kthtech.kthtech.registry;
 
 import com.stagoh.kthtech.kthtech.KthTech;
 import com.stagoh.kthtech.kthtech.data.KTItemModelProvider;
-import com.stagoh.kthtech.kthtech.data.KTRecipeProvider;
 import com.stagoh.kthtech.kthtech.data.lang.KTENUSLangProvider;
 import com.stagoh.kthtech.kthtech.data.lang.KTZHCNLangProvider;
+import com.stagoh.kthtech.kthtech.data.recipe.KTRecipeProvider;
 
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.recipes.RecipeProvider;

@@ -1,4 +1,4 @@
-package com.stagoh.kthtech.kthtech.data;
+package com.stagoh.kthtech.kthtech.data.recipe;
 
 import static com.stagoh.kthtech.kthtech.util.KTUtils.ktRLoc;
 

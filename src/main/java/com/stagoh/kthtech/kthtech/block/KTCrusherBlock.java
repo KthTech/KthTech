@@ -3,7 +3,6 @@ package com.stagoh.kthtech.kthtech.block;
 import javax.annotation.Nullable;
 
 import com.stagoh.kthtech.kthtech.block.entity.KTCrusherBlockEntity;
-import com.stagoh.kthtech.kthtech.menu.KTCrusherMenu;
 import com.stagoh.kthtech.kthtech.registry.KTBlockEntityTypes;
 
 import net.minecraft.core.BlockPos;
@@ -23,7 +22,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.NetworkHooks;
 
 public class KTCrusherBlock extends BaseEntityBlock
@@ -58,9 +56,7 @@ public class KTCrusherBlock extends BaseEntityBlock
         var entity = (KTCrusherBlockEntity)level.getBlockEntity(pos);
         if (entity == null) return null;
         return new SimpleMenuProvider(
-            (id, inventory, player) -> new KTCrusherMenu(
-                id, inventory, new ItemStackHandler(entity.getItems())
-            ),
+            entity::createMenu,
             Component.translatable("menu.title.kthtech.crusher")
         );
     }

@@ -16,7 +16,10 @@ public class KTENUSLangProvider extends KTAbstractLangProvider
     protected void addTranslations()
     {
         add("item_group." + KthTech.MODID, "KthTech");
+        add("menu.title.kthtech.crusher", "Crusher");
 
         add(KTItems.COKE.get(), "Coke");
+        add(KTItems.CRUSHED_RAW_IRON.get(), "Crushed Raw Iron");
+        add(KTItems.CRUSHER.get(), "Crusher");
     }
 }

@@ -1,0 +1,10 @@
+{
+  "type": "kthtech:crusher",
+  "energy": 100,
+  "ingredient": {
+    "item": "minecraft:raw_iron"
+  },
+  "result": {
+    "item": "kthtech:crushed_raw_iron"
+  }
+}

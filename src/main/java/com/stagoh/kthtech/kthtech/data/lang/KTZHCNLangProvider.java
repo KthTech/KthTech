@@ -16,7 +16,10 @@ public class KTZHCNLangProvider extends KTAbstractLangProvider
     protected void addTranslations()
     {
         add("item_group." + KthTech.MODID, "K 代科技");
+        add("menu.title.kthtech.crusher", "粉碎机");
 
         add(KTItems.COKE.get(), "焦炭");
+        add(KTItems.CRUSHED_RAW_IRON.get(), "粉碎粗铁");
+        add(KTItems.CRUSHER.get(), "粉碎机");
     }
 }

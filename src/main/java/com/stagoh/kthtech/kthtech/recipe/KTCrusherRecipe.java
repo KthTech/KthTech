@@ -3,13 +3,13 @@ package com.stagoh.kthtech.kthtech.recipe;
 import org.jetbrains.annotations.Nullable;
 
 import com.google.gson.JsonObject;
+import com.stagoh.kthtech.kthtech.block.entity.KTCrusherBlockEntity;
 import com.stagoh.kthtech.kthtech.registry.KTRecipeSerializers;
 import com.stagoh.kthtech.kthtech.registry.KTRecipeTypes;
 
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
@@ -22,29 +22,26 @@ public record KTCrusherRecipe(
     ResourceLocation location,
     Ingredient ingredient,
     ItemStack result,
-    int time
-) implements Recipe<Container>
+    int energy
+) implements Recipe<KTCrusherBlockEntity>
 {
 
     @Override
-    public boolean matches(Container container, Level level)
+    public boolean matches(KTCrusherBlockEntity entity, Level level)
     {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'matches'");
+        return this.ingredient.test(entity.getItem(0));
     }
 
     @Override
-    public ItemStack assemble(Container container, RegistryAccess access)
+    public ItemStack assemble(KTCrusherBlockEntity entity, RegistryAccess access)
     {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'assemble'");
+        return this.result.copy();
     }
 
     @Override
     public boolean canCraftInDimensions(int p_43999_, int p_44000_)
     {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'canCraftInDimensions'");
+        return true;
     }
 
     @Override
@@ -78,8 +75,8 @@ public record KTCrusherRecipe(
         {
             var ingredient = Ingredient.fromJson(json.get("ingredient"));
             var result = CraftingHelper.getItemStack(json.getAsJsonObject("result"), true, true);
-            var time = json.get("time").getAsInt();
-            return new KTCrusherRecipe(location, ingredient, result, time);
+            var energy = json.get("energy").getAsInt();
+            return new KTCrusherRecipe(location, ingredient, result, energy);
         }
 
         @Override
@@ -87,8 +84,8 @@ public record KTCrusherRecipe(
         {
             var ingredient = Ingredient.fromNetwork(buf);
             var result = buf.readItem();
-            var time = buf.readInt();
-            return new KTCrusherRecipe(location, ingredient, result, time);
+            var energy = buf.readInt();
+            return new KTCrusherRecipe(location, ingredient, result, energy);
         }
 
         @Override
@@ -96,7 +93,7 @@ public record KTCrusherRecipe(
         {
             recipe.ingredient.toNetwork(buf);
             buf.writeItem(recipe.result);
-            buf.writeInt(recipe.time);
+            buf.writeInt(recipe.energy);
         }
     }
 }

@@ -1,4 +1,7 @@
 {
+  "block.kthtech.crusher": "粉碎机",
   "item.kthtech.coke": "焦炭",
-  "item_group.kthtech": "K 代科技"
+  "item.kthtech.crushed_raw_iron": "粉碎粗铁",
+  "item_group.kthtech": "K 代科技",
+  "menu.title.kthtech.crusher": "粉碎机"
 }

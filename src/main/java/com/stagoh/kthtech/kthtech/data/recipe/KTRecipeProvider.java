@@ -4,6 +4,7 @@ import static com.stagoh.kthtech.kthtech.util.KTUtils.ktRLoc;
 
 import java.util.function.Consumer;
 
+import com.stagoh.kthtech.kthtech.data.recipe.builder.KTCrusherRecipeBuilder;
 import com.stagoh.kthtech.kthtech.registry.KTItems;
 
 import net.minecraft.data.PackOutput;
@@ -48,6 +49,14 @@ public class KTRecipeProvider extends RecipeProvider
             0.15f,
             200
         ).unlockedBy(getHasName(Items.COAL), has(Items.COAL))
+            .save(consumer);
+
+        KTCrusherRecipeBuilder.crusher(
+            Ingredient.of(Items.RAW_IRON),
+            KTItems.CRUSHED_RAW_IRON.get(),
+            1,
+            100
+        ).unlockedBy(getHasName(Items.RAW_IRON), has(Items.RAW_IRON))
             .save(consumer);
     }
 }

@@ -51,12 +51,14 @@ public class KTRecipeProvider extends RecipeProvider
         ).unlockedBy(getHasName(Items.COAL), has(Items.COAL))
             .save(consumer);
 
-        KTCrusherRecipeBuilder.crusher(
-            Ingredient.of(Items.RAW_IRON),
-            KTItems.CRUSHED_RAW_IRON.get(),
-            1,
-            100
-        ).unlockedBy(getHasName(Items.RAW_IRON), has(Items.RAW_IRON))
+        KTCrusherRecipeBuilder.crusher(Items.RAW_IRON, KTItems.CRUSHED_RAW_IRON.get())
+            .unlockedBy(getHasName(Items.RAW_IRON), has(Items.RAW_IRON))
+            .save(consumer);
+        KTCrusherRecipeBuilder.crusher(Items.RAW_COPPER, KTItems.CRUSHED_RAW_COPPER.get())
+            .unlockedBy(getHasName(Items.RAW_COPPER), has(Items.RAW_COPPER))
+            .save(consumer);
+        KTCrusherRecipeBuilder.crusher(Items.RAW_GOLD, KTItems.CRUSHED_RAW_GOLD.get())
+            .unlockedBy(getHasName(Items.RAW_GOLD), has(Items.RAW_GOLD))
             .save(consumer);
     }
 }

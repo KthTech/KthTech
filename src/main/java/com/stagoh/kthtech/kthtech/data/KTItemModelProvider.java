@@ -19,5 +19,7 @@ public class KTItemModelProvider extends ItemModelProvider
     {
         basicItem(KTItems.COKE.get());
         basicItem(KTItems.CRUSHED_RAW_IRON.get());
+        basicItem(KTItems.CRUSHED_RAW_COPPER.get());
+        basicItem(KTItems.CRUSHED_RAW_GOLD.get());
     }
 }

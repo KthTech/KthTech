@@ -44,6 +44,21 @@ public class KTCrusherRecipeBuilder implements RecipeBuilder
         return new KTCrusherRecipeBuilder(ingredient, result, count, energy);
     }
 
+    public static KTCrusherRecipeBuilder crusher(ItemLike ingredient, ItemLike result, int count, int energy)
+    {
+        return new KTCrusherRecipeBuilder(Ingredient.of(ingredient), result, count, energy);
+    }
+
+    public static KTCrusherRecipeBuilder crusher(Ingredient ingredient, ItemLike result)
+    {
+        return crusher(ingredient, result, 1, 100);
+    }
+
+    public static KTCrusherRecipeBuilder crusher(ItemLike ingredient, ItemLike result)
+    {
+        return crusher(Ingredient.of(ingredient), result);
+    }
+
     @Override
     public KTCrusherRecipeBuilder unlockedBy(String name, CriterionTriggerInstance trigger)
     {

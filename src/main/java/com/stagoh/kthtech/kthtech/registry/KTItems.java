@@ -25,6 +25,8 @@ public class KTItems
     );
 
     public static final RegistryObject<Item> CRUSHED_RAW_IRON = basic("crushed_raw_iron");
+    public static final RegistryObject<Item> CRUSHED_RAW_COPPER = basic("crushed_raw_copper");
+    public static final RegistryObject<Item> CRUSHED_RAW_GOLD = basic("crushed_raw_gold");
 
     public static final RegistryObject<KtFuelItem> COKE = normal("coke", () -> new KtFuelItem(1600));
 

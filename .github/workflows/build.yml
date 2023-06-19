@@ -25,7 +25,13 @@ jobs:
       - name: Make gradle wrapper executable
         run: chmod +x ./gradlew
 
+      - name: Generate data
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: runData
+
       - name: Build
+        id: build
         uses: gradle/gradle-build-action@v2
         with:
           arguments: build --scan
@@ -40,7 +46,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '❌ ${{ github.workflow }} failed: ${{ steps.gradle.outputs.build-scan-url }}'
+              body: '❌ ${{ github.workflow }} failed: ${{ steps.build.outputs.build-scan-url }}'
             })
 
       - name: Upload artifact

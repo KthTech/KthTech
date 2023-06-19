@@ -25,7 +25,14 @@ jobs:
       - name: Make gradle wrapper executable
         run: chmod +x ./gradlew
 
+      - name: Generate data
+        id: data
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: runData --scan
+
       - name: Build
+        id: build
         uses: gradle/gradle-build-action@v2
         with:
           arguments: build --scan
@@ -34,14 +41,19 @@ jobs:
         uses: actions/github-script@v6
         if: github.event_name == 'pull_request' && failure()
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            github.rest.issues.createComment({
+            let body = '';
+            if(${{ steps.data.outcome != 'success' }})
+              body = '❌Generate data failed: ${{ steps.data.outputs.build-scan-url }}';
+            else if(${{ steps.build.outcome != 'success' }})
+              body = '❌Build failed: ${{ steps.build.outputs.build-scan-url }}';
+            if(body) github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '❌ ${{ github.workflow }} failed: ${{ steps.gradle.outputs.build-scan-url }}'
-            })
+              body
+            });
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3

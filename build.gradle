@@ -39,6 +39,7 @@ minecraft {
     runs {
         client {
             workingDirectory project.file("run")
+            forceExit = false
 
             // Recommended logging data for a userdev environment
             // The markers can be added/remove as needed separated by commas.
@@ -64,6 +65,7 @@ minecraft {
 
         server {
             workingDirectory project.file("run")
+            forceExit = false
 
             property "forge.logging.markers", "REGISTRIES"
 
@@ -83,6 +85,7 @@ minecraft {
         // The gametest system is also enabled by default for other run configs under the /test command.
         gameTestServer {
             workingDirectory project.file("run")
+            forceExit = false
 
             property "forge.logging.markers", "REGISTRIES"
 
@@ -99,6 +102,7 @@ minecraft {
 
         data {
             workingDirectory project.file("run")
+            forceExit = false
 
             property "forge.logging.markers", "REGISTRIES"
 

@@ -21,6 +21,8 @@ public class KTTabRegistry
                 .displayItems((params, output) -> {
                     output.accept(KTItems.COKE.get());
                     output.accept(KTItems.CRUSHED_RAW_IRON.get());
+                    output.accept(KTItems.CRUSHED_RAW_GOLD.get());
+                    output.accept(KTItems.CRUSHED_RAW_COPPER.get());
                     output.accept(KTBlocks.CRUSHER.get());
                 });
         });

@@ -2,14 +2,13 @@ package com.stagoh.kthtech.kthtech.menu;
 
 import com.stagoh.kthtech.kthtech.registry.KTMenuTypes;
 
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.SlotItemHandler;
 
 public class KTCrusherMenu extends AbstractContainerMenu
 {
@@ -20,14 +19,14 @@ public class KTCrusherMenu extends AbstractContainerMenu
 
     public KTCrusherMenu(int id, Inventory inventory)
     {
-        this(id, inventory, new ItemStackHandler(2));
+        this(id, inventory, new SimpleContainer(2));
     }
 
-    public KTCrusherMenu(int id, Inventory inventory, IItemHandler items)
+    public KTCrusherMenu(int id, Inventory inventory, Container container)
     {
         super(KTMenuTypes.CRUSHER.get(), id);
-        this.addSlot(new SlotItemHandler(items, BGOF_RAW, 8 + 2 * 18, 36));
-        this.addSlot(new SlotItemHandler(items, BGOF_RESULT, 8 + 6 * 18, 36) {
+        this.addSlot(new Slot(container, BGOF_RAW, 8 + 2 * 18, 36));
+        this.addSlot(new Slot(container, BGOF_RESULT, 8 + 6 * 18, 36) {
             public boolean mayPlace(ItemStack is)
             {
                 return false;

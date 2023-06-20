@@ -26,7 +26,6 @@ import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.items.ItemStackHandler;
 
 public class KTCrusherBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer
 {
@@ -109,7 +108,7 @@ public class KTCrusherBlockEntity extends BaseContainerBlockEntity implements Wo
     @Override
     protected AbstractContainerMenu createMenu(int id, Inventory inventory)
     {
-        return new KTCrusherMenu(id, inventory, new ItemStackHandler(this.items));
+        return new KTCrusherMenu(id, inventory, this);
     }
 
     @Override
@@ -171,22 +170,31 @@ public class KTCrusherBlockEntity extends BaseContainerBlockEntity implements Wo
 
     public static void tick(Level level, BlockPos pos, BlockState state, KTCrusherBlockEntity entity)
     {
+        boolean changed = false;
         var rawSLot = entity.items.get(SLOT_RAW);
         var resSlot = entity.items.get(SLOT_RESULT);
         var recipe = entity.quickCheck.getRecipeFor(entity, entity.level);
         if (!entity.canProgress(recipe))
         {
-            entity.usedTime = 0;
-            return;
+            if (entity.usedTime != 0)
+            {
+                changed = true;
+                entity.usedTime = 0;
+            }
         }
-        var result = recipe.get().result();
-        var needTime = recipe.get().energy();
-        if (++entity.usedTime == needTime)
+        else
         {
-            entity.usedTime = 0;
-            rawSLot.shrink(1);
-            if (resSlot.isEmpty()) entity.items.set(SLOT_RESULT, result);
-            else resSlot.grow(result.getCount());
+            changed = true;
+            var result = recipe.get().result();
+            var needTime = recipe.get().energy();
+            if (++entity.usedTime == needTime)
+            {
+                entity.usedTime = 0;
+                rawSLot.shrink(1);
+                if (resSlot.isEmpty()) entity.items.set(SLOT_RESULT, result);
+                else resSlot.grow(result.getCount());
+            }
         }
+        if (changed) entity.setChanged();
     }
 }

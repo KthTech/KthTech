@@ -21,6 +21,7 @@ import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
@@ -32,7 +33,29 @@ public class KTCrusherBlockEntity extends BaseContainerBlockEntity implements Wo
     private static final int SLOT_RAW = 0;
     private static final int SLOT_RESULT = 1;
 
-    private int usedTime;
+    private int usedTime, totalTime;
+    private final ContainerData data = new ContainerData() {
+        @Override
+        public int get(int index)
+        {
+            if (index == 0) return KTCrusherBlockEntity.this.usedTime;
+            else return KTCrusherBlockEntity.this.totalTime;
+        }
+
+        @Override
+        public void set(int index, int value)
+        {
+            if (index == 0) KTCrusherBlockEntity.this.usedTime = value;
+            else KTCrusherBlockEntity.this.totalTime = value;
+        }
+
+        @Override
+        public int getCount()
+        {
+            return 2;
+        }
+    };
+
     private final NonNullList<ItemStack> items = NonNullList.withSize(2, ItemStack.EMPTY);
     private final RecipeManager.CachedCheck<KTCrusherBlockEntity, KTCrusherRecipe> quickCheck;
 
@@ -108,7 +131,7 @@ public class KTCrusherBlockEntity extends BaseContainerBlockEntity implements Wo
     @Override
     protected AbstractContainerMenu createMenu(int id, Inventory inventory)
     {
-        return new KTCrusherMenu(id, inventory, this);
+        return new KTCrusherMenu(id, inventory, this, this.data);
     }
 
     @Override
@@ -118,6 +141,7 @@ public class KTCrusherBlockEntity extends BaseContainerBlockEntity implements Wo
         Collections.fill(this.items, ItemStack.EMPTY);
         ContainerHelper.loadAllItems(tag, this.items);
         this.usedTime = tag.getInt("UsedTime");
+        this.totalTime = tag.getInt("TotalTime");
     }
 
     @Override
@@ -126,6 +150,7 @@ public class KTCrusherBlockEntity extends BaseContainerBlockEntity implements Wo
         super.saveAdditional(tag);
         ContainerHelper.saveAllItems(tag, this.items);
         tag.putInt("UsedTime", this.usedTime);
+        tag.putInt("TotalTime", this.totalTime);
     }
 
     @Override
@@ -153,15 +178,10 @@ public class KTCrusherBlockEntity extends BaseContainerBlockEntity implements Wo
         return true;
     }
 
-    public NonNullList<ItemStack> getItems()
-    {
-        return this.items;
-    }
-
     private boolean canProgress(Optional<KTCrusherRecipe> recipe)
     {
-        var resSlot = this.items.get(SLOT_RESULT);
         if (recipe.isEmpty()) return false;
+        var resSlot = this.items.get(SLOT_RESULT);
         if (resSlot.isEmpty()) return true;
         var recipeRes = recipe.map(KTCrusherRecipe::result).get();
         if (!resSlot.sameItem(recipeRes)) return false;
@@ -185,13 +205,13 @@ public class KTCrusherBlockEntity extends BaseContainerBlockEntity implements Wo
         else
         {
             changed = true;
+            entity.totalTime = recipe.get().energy();
             var result = recipe.get().result();
-            var needTime = recipe.get().energy();
-            if (++entity.usedTime == needTime)
+            if (++entity.usedTime == entity.totalTime)
             {
                 entity.usedTime = 0;
                 rawSLot.shrink(1);
-                if (resSlot.isEmpty()) entity.items.set(SLOT_RESULT, result);
+                if (resSlot.isEmpty()) entity.items.set(SLOT_RESULT, result.copy());
                 else resSlot.grow(result.getCount());
             }
         }

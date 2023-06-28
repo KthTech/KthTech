@@ -22,7 +22,7 @@ public class KTCrusherMenu extends AbstractContainerMenu
     private static final int BGOF_INVENTORY = BGOF_RESULT + 1;
     private static final int BGOF_HOTBAR = BGOF_RESULT + 3 * 9 + 1;
 
-    private Container container;
+    private final Container container;
     private final ContainerData data;
 
     public KTCrusherMenu(int id, Inventory inventory)
